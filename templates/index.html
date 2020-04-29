@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% if username %}
+    <a href="/" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">На главную</a>
+        <h3>Привет, <b>{{ username }}</b>!
+            {% if github_url != '' %}
+            Я знаю твой профиль на <a href="{{ github_url }}">github</a>!
+            {% else %}
+            Я не знаю твой профиль на github! =(
+            {% endif %}
+        </h3>  
+        <p>Тут ты можешь <a href="/logout">выйти</a>.</p>
+        
+        
+        {% block my %}
+        <div class="row row-cols-1">
+            <a href="/list_biblio" type="button" class="btn btn-primary"">Таблица книг</a>
+            <a href="/book/create" type="button" class="btn btn-primary"">Добавить книгу</a>
+            <a href="/authors" type="button" class="btn btn-primary"">Список авторов</a>
+            <a href="/author/create" type="button" class="btn btn-primary"">Добавить автора</a>
+            <a href="/friends" type="button" class="btn btn-primary"">Список друзей</a>
+        </div>
+        {% endblock %}
+    {% else %}  
+        <p>Тебе нужно <a href="/register">зарегистрироваться</a> или <a href="/login">войти на сайт</a>!</p>  
+    {% endif %}
+
+{% endblock %}

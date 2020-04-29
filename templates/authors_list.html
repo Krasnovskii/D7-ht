@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}Список авторов{% endblock %}
+
+{% block my %}
+
+    <ul class="list-group">
+        {% for author in object_list %}
+		    <li class="list-group-item list-group-item-action list-group-item-success">{{ author.full_name }} (Родился: {{ author.birth_year }})</li>
+		{% endfor %}
+    </ul>
+    <a href="/author/create" type="button" class="btn btn-primary"">Добавить автора</a>
+
+
+{% endblock %}
